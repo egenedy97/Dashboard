@@ -29,7 +29,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <tr v-for="(Mr, idx) in UserAdding" :key="idx">
+                                            <!-- <tr v-for="(Mr, idx) in UserAdding" :key="idx">
                                             
                                                 <td>{{Mr.firstname}} </td>
                                                 <td>{{Mr.email}} </td>
@@ -43,7 +43,7 @@
                                                     <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                     <a href="#" @click="deleteMe(Mr.id)"><i class="fas fa-trash-alt text-danger font-16"></i>
                                                 </a></td>
-                                            </tr>
+                                            </tr> -->
                                            
                                             <!-- <app-Edit-User></app-Edit-User> -->
 
@@ -64,9 +64,9 @@
 import RegisterUser from '@/components/RegisterUser' 
 import SearchUser from '@/components/SearchUser'
 import EditUser from '@/components/EditUser' 
-import 'firebase/firestore'
-import firebase from 'firebase'
-import { db } from '../main'
+// import 'firebase/firestore'
+// import firebase from 'firebase'
+// import { db } from '../main'
 
 export default {
    data (){
@@ -82,15 +82,15 @@ export default {
         appEditUser : EditUser,
         }
     ,
-    firestore () {
-        return {
-        UserAdding: db.collection('UserAdding').orderBy('createdAt')
-        }
-    },
+    // firestore () {
+    //     return {
+    //     UserAdding: db.collection('UserAdding').orderBy('createdAt')
+    //     }
+    // },
     methods:{
-         deleteMe (id) {
-      db.collection('UserAdding').doc(id).delete()
-    }
+    //      deleteMe (id) {
+    //   db.collection('UserAdding').doc(id).delete()
+    // }
     }
 }
 </script>

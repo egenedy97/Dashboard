@@ -7,11 +7,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { firestorePlugin } from 'vuefire'
 import 'firebase/firestore'
+import settings from 'firebase'
 import * as firebase from 'firebase/app';
 
-Vue.use(firestorePlugin);
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
+Vue.use(firestorePlugin);
 
 Vue.config.productionTip = false
 
