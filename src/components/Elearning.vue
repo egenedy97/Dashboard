@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <app-Regular-Subject></app-Regular-Subject>
+        <br>
         <app-Footer-User></app-Footer-User>
     </div>
 </template>

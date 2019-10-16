@@ -8,7 +8,7 @@
 </template>
 <script>
 import MyFooter from '@/components/Shared/MyFooter' 
-import RegularUser from '@/components/RegularUser' ;
+import RegularUser from '@/components/User/RegularUser' ;
 export default {
     components:{
         appRegularUser: RegularUser,
@@ -17,7 +17,7 @@ export default {
     
 }
 </script>
-<style scoped>
+<style>
  @import '../assets/css/icons.css';
   @import '../assets/css/style.css' ;
   @import '../assets/css/metisMenu.min';

@@ -17,8 +17,8 @@ export default {
 </script>
 
 <style scoped>
- @import '../assets/css/icons.css';
-  @import '../assets/css/style.css' ; 
+ @import '../../assets/css/icons.css';
+  @import '../../assets/css/style.css' ; 
   @import url('https://fonts.googleapis.com/css?family=Tajawal&display=swap');
   :placeholder-shown {
         font-family: 'Tajawal', sans-serif;

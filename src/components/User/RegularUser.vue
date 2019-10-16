@@ -18,32 +18,32 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th><b>الاسم</b></th>
+                                            <th><b>المدرسه</b></th>
                                             <th><b>الايميل</b></th>
                                             <th><b>الجوال</b></th>
-                                            <th><b>الجنسيه</b></th>
-                                            <th><b>رقم الفصل </b></th>
-                                            <th><b>المرحله الدراسيه</b></th>
+                                            <th><b> الجنسيه </b></th>
+                                            <th><b> رابط الفيديو</b></th>
                                             <th><b>المسمي الوظيفي</b></th>
                                             <th><b>النوع</b>  </th>
                                             <th><b>تعديل او حذف </b>  </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                            <!-- <tr v-for="(Mr, idx) in UserAdding" :key="idx">
+                                            <tr v-for=" (User,idx) in Users" :key="idx">
                                             
-                                                <td>{{Mr.firstname}} </td>
-                                                <td>{{Mr.email}} </td>
-                                                <td>{{Mr.mobile}} </td>
-                                                <td><b>{{Mr.nationality}} </b></td>
-                                                <td><b>{{Mr.classroom}} </b></td>
-                                                <td><b>{{Mr.eductionallevel}} </b></td>
-                                                <td><b>{{Mr.role}} </b></td>
-                                                <td><b>{{Mr.sex}} </b></td>
+                                                <td>{{User.firstname}} {{User.lastname}} </td>
+                                                <td><b>{{User.school}} </b></td>
+                                                <td>{{User.email}} </td>
+                                                <td>{{User.mobile}} </td>
+                                                <td><b>{{User.nationality}} </b></td>
+                                                <td><b>{{User.link}} </b></td>
+                                                <td><b>{{User.role}} </b></td>
+                                                <td><b>{{User.sex}} </b></td>                                                
                                                 <td>                                                       
                                                     <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                    <a href="#" @click="deleteMe(Mr.id)"><i class="fas fa-trash-alt text-danger font-16"></i>
+                                                    <a href="#" ><i class="fas fa-trash-alt text-danger font-16"></i>
                                                 </a></td>
-                                            </tr> -->
+                                            </tr>
                                            
                                             <!-- <app-Edit-User></app-Edit-User> -->
 
@@ -61,10 +61,12 @@
 </template>
 
 <script>
-import RegisterUser from '@/components/RegisterUser' 
-import SearchUser from '@/components/SearchUser'
-import EditUser from '@/components/EditUser' 
-// import 'firebase/firestore'
+import RegisterUser from '@/components/User/RegisterUser' 
+import SearchUser from '@/components/User/SearchUser'
+import EditUser from '@/components/User/EditUser' 
+import firebase from 'firebase'
+import { db } from '../../main'
+import 'firebase/firestore'
 // import firebase from 'firebase'
 // import { db } from '../main'
 
@@ -72,7 +74,8 @@ export default {
    data (){
         {
           return{          
-                    isHidden:true
+                    isHidden:true,
+                    Users1:[]
                 }
         }
     },
@@ -82,15 +85,22 @@ export default {
         appEditUser : EditUser,
         }
     ,
-    // firestore () {
-    //     return {
-    //     UserAdding: db.collection('UserAdding').orderBy('createdAt')
-    //     }
-    // },
+    firestore () {
+        return {
+             Users: db.collection("Users").orderBy("createdAt")
+        }
+    },
     methods:{
-    //      deleteMe (id) {
-    //   db.collection('UserAdding').doc(id).delete()
-    // }
+        created()
+        {
+            db.collection('Users').get().then(snapshot =>{
+                snapshot.forEach(doc => {
+                    let User = doc.data()
+                    User.id = doc.id
+                    this.Users1.push(User)
+                })
+            })
+        }
     }
 }
 </script>
